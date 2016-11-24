@@ -1,0 +1,37 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" 
+	updateCheck="true"
+	monitoring="autodetect" 
+	dynamicConfig="true">
+
+	<diskStore path="java.io.tmpdir" />
+	
+	<defaultCache 
+		maxElementsInMemory="10000"
+		eternal="false" 
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="600"
+		memoryStoreEvictionPolicy="LFU"
+		statistics="true" 
+		transactionalMode="off">
+	</defaultCache>
+	
+<!-- 	<cache name="mysqlCache" 
+		maxElementsInMemory="10000"
+		eternal="false" 
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="600"
+		memoryStoreEvictionPolicy="LFU"
+		statistics="true" 
+		transactionalMode="off">
+	</cache> -->
+	
+	<cache name="org.hibernate.cache.internal.StandardQueryCache" 
+			eternal="false" timeToIdleSeconds="0" timeToLiveSeconds="300"
+			overflowToDisk="false" diskExpiryThreadIntervalSeconds="60"	memoryStoreEvictionPolicy="LRU" />
+		
+	<cache name="org.hibernate.cache.spi.UpdateTimestampsCache" eternal="true" />
+
+</ehcache>
